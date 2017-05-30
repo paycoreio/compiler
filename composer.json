@@ -1,0 +1,20 @@
+{
+  "name": "paymaxi/compiler",
+  "license": "MIT",
+  "description": "Compiler component",
+  "type": "library",
+  "require": {
+    "php": "^7.0",
+    "sylius/registry": "^0.19"
+  },
+  "autoload": {
+    "psr-4": { "Paymaxi\\Component\\Compiler\\": "" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    }
+  },
+  "minimum-stability":"dev",
+  "prefer-stable": true
+}
