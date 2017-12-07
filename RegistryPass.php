@@ -20,14 +20,22 @@ final class RegistryPass extends AbstractPass
          */
         foreach ($taggedServices as $id => $tags) {
             $alias = null;
+            $generateAlias = false;
             foreach ($tags as $tag) {
                 if (isset($tag['alias'])) {
                     $alias = $tag['alias'];
                 }
+                if (isset($tag['generate-alias']) && true === $tag['generate-alias']) {
+                     $generateAlias = true;
+                }
             }
 
-            if (null === $alias) {
-                throw new \RuntimeException('Service should have alias.');
+            if (null === $alias && false === $generateAlias) {
+                throw new \RuntimeException('Service should have an alias or set flag to generate it manually.');
+            }
+
+            if($generateAlias){
+                $alias = $id;
             }
 
             $definition->addMethodCall(
